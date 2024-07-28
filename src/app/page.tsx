@@ -10,9 +10,12 @@ export default function Home() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState<UserType | null>(null);
 
+  console.log(user);
   return (
     <>
+    
       {
+        
         isAuthenticated ? (
           <Usertimeline 
           userData={user}/>

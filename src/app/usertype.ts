@@ -1,4 +1,4 @@
-type PostType = {
+export type PostType = {
   content: string;
   likes: number;
 }
