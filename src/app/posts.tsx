@@ -9,10 +9,12 @@ export default function Posts({posts}:PostsProps){
   return (
     <>
       {posts?.map((post: any)=>(
-        <>
-        <li>{post.content}</li>
-        <li>{post.likes}</li>
-        </>
+        <ul>
+            <h3>Content:</h3>
+            <li>{post.content}</li>
+            <h3>likes:</h3>
+            <li>{post.likes}</li>
+        </ul>
       ))}
     </>
   );
