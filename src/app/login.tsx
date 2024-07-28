@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { UserType } from "./usertype";
 
 const users = [
   {
-    email: "haider@gmail.com",
+    email: "zayb@gmail.com",
     password: "123456",
-    userName: "haider ali",
+    userName: "Zayb Ali",
     hobbies: ["swimming", "gardening"],
     post: [
       {
@@ -22,9 +23,9 @@ const users = [
     ],
   },
   {
-    email: "abdullah@gmail.com",
+    email: "shoaib@gmail.com",
     password: "123456",
-    userName: "abdullah",
+    userName: "shoaib",
     hobbies: ["gym", "video games"],
     post: [
       {
@@ -42,42 +43,48 @@ const users = [
 ];
 
 type LoginType ={
-    changeAuthStatus: (status: boolean)=>void;
-    setUser: (user: any)=>void;
+  changeAuthStatus: (status: boolean) =>void;
+  setUser:(user : UserType) =>void;
+
 }
 
-export default function Login({changeAuthStatus, setUser}: LoginType) {
+export default function Login({changeAuthStatus, setUser} :LoginType) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const loginHandler = () => {
-    
+    let [userFound] =  users.filter(
+      (user) => user.email === email && user.password == password
+      )
+     if(userFound) {
+      changeAuthStatus(true);
+      setUser(userFound);
+     }
   };
 
-  
   return (
     <>
       <label htmlFor="email">
-        Emai:
+        Email:
         <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(ev) => {
-            setEmail(ev.target.value);
-          }}
+        type="email"
+        id="email"
+        value={email}
+        onChange={(ev) => {
+          setEmail(ev.target.value);
+        }} 
         />
       </label>
       <br />
       <label htmlFor="password">
         Password:
         <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(ev) => {
-            setPassword(ev.target.value);
-          }}
+        type="password"
+        id="password"
+        value={password}
+        onChange={(ev) => {
+          setPassword(ev.target.value);
+        }}
         />
       </label>
       <br />
